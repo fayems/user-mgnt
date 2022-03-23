@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <springProfile name="default">
+        <property resource="application.properties" />
+    </springProfile>
+    <springProfile name="prod">
+        <property resource="application-prod.properties" />
+    </springProfile>
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) ${logback.app-module} %X{level} %highlight(%-5level) %logger{36}.%M %X{regate_code} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    <springProfile name="prod">
+        <appender name="consoleAppender" class="ch.qos.logback.classic.sift.SiftingAppender">
+            <discriminator>
+                <key>app_module</key>
+                <defaultValue>${logback.app-module}</defaultValue>
+            </discriminator>
+            <sift>
+                <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+                    <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+                        <providers>
+                            <pattern>
+                                <pattern>
+                                    {
+                                    "severity_label": "%level",
+                                    "app_ccx": "${logback.app-ccx}",
+                                    "app_version": "${logback.app-version}",
+                                    "app_env": "${logback.app-env}",
+                                    "app_module": "${app_module}"
+                                    }
+                                </pattern>
+                            </pattern>
+                            <timestamp>
+                                <fieldName>app_datetime</fieldName>
+                            </timestamp>
+                            <message>
+                                <fieldName>app_message</fieldName>
+                            </message>
+                            <logstashMarkers />
+                            <stackTrace />
+                        </providers>
+                    </encoder>
+                </appender>
+            </sift>
+        </appender>
+        <logger name="jsonLogger" additivity="false" level="INFO">
+            <appender-ref ref="consoleAppender"/>
+        </logger>
+    </springProfile>
+    <root level="INFO">
+        <appender-ref ref="consoleAppender"/>
+    </root>
+</configuration>

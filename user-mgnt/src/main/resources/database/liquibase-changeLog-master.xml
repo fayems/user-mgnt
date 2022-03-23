@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <property name="now" value="now()" dbms="mysql,h2"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2"/>
+
+    <property name="floatType" value="float4" dbms="h2"/>
+    <property name="floatType" value="float" dbms="mysql"/>
+
+    <property name="dataTbs" value="tbs_data"/>
+    <property name="indexTbs" value="tbs_indexe"/>
+
+    <property name="idType" value="varchar(256)"/>
+
+    <property name="localDateType" value="date"/>
+    <property name="localDateTimeType" value="datetime"/>
+    <property name="localTimeType" value="time"/>
+
+    <property name="traceDateType" value="datetime"/>
+
+    <includeAll path="1.0" relativeToChangelogFile="true"/>
+</databaseChangeLog>
