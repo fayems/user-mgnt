@@ -22,21 +22,21 @@ mvn spring-boot:run
 The easiest way to deploy the sample application to OpenShift is to use the [OpenShift CLI](https://docs.openshift.org/latest/cli_reference/index.html):
 
 ```shell
-oc new-app fayems/user_api-maven3-centos~https://github.com/fayems/user_api
+oc new-app fayems/user-mgnt-maven3-centos~https://github.com/fayems/user-mgnt
 ```
 
 This will create:
 
-* An ImageStream called "user_api-maven3-centos"
-* An ImageStream called "user_api"
-* A BuildConfig called "user_api"
-* DeploymentConfig called "user_api"
-* Service called "user_api"
+* An ImageStream called "user-mgnt-maven3-centos"
+* An ImageStream called "user-mgnt"
+* A BuildConfig called "user-mgnt"
+* DeploymentConfig called "user-mgnt"
+* Service called "user-mgnt"
 
-If you want to access the app from outside your OpenShift installation, you have to expose the user_api service:
+If you want to access the app from outside your OpenShift installation, you have to expose the user-mgnt service:
 
 ```shell
-oc expose user_api --hostname=www.example.com
+oc expose user-mgnt --hostname=www.example.com
 ```
 
 # Check Out the Swagger UI
