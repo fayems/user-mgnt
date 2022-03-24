@@ -7,14 +7,21 @@ For building and running the application you need:
 - [JDK 11](https://www.oracle.com/in/java/technologies/javase/jdk11-archive-downloads.html)
 - [Maven 3](https://maven.apache.org)
 
+## Cloning the application
+
+```shell
+git clone https://github.com/fayems/user-mgnt.git
+```
+
 ## Running the application locally
 
 There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `fr.af.test.offer.usr.UserMgntApplication` class from your IDE.
 
-Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/spring-boot/docs/current/reference/html/build-tool-plugins-maven-plugin.html) like so:
+Alternatively you can run like so:
 
 ```shell
-mvn spring-boot:run
+mvn clean package
+java -jar user-mgnt/target/user-mgnt-00.00.01-SNAPSHOT.jar
 ```
 
 ## Deploying the application to OpenShift
@@ -44,7 +51,7 @@ oc expose user-mgnt --hostname=www.example.com
 Open a browser and key in URL:
 
 ```
-$ open http://localhost:8080/swagger-ui.html
+$ open http://localhost:8080/swagger-ui/
 ```
 Authenticate with admin/secret
 
