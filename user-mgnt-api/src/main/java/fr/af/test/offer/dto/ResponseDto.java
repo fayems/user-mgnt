@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor @Builder
 public class ResponseDto {
     private Integer status;
-    private String message;
+    private Object message;
 
 }

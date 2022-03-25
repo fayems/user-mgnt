@@ -52,7 +52,11 @@ public class UserController implements UserApi {
     public ResponseEntity postUser(UserDto userDto, BindingResult result) {
         try {
             if(result.hasErrors()) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST.value()).body(MessageError.getError(result));
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST.value())
+                        .body(ResponseDto.builder()
+                                        .status(HttpStatus.BAD_REQUEST.value())
+                                        .message(MessageError.getError(result))
+                                        .build());
             }
             if(userService.registrationForbidden(userDto)) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN.value())

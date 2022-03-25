@@ -17,7 +17,7 @@ git clone https://github.com/fayems/user-mgnt.git
 
 There are several ways to run a Spring Boot application on your local machine. One way is to execute the `main` method in the `fr.af.test.offer.usr.UserMgntApplication` class from your IDE.
 
-Alternatively you can run like so:
+Alternatively you can run the application like so:
 
 ```shell
 mvn clean package
@@ -51,7 +51,7 @@ oc expose user-mgnt --hostname=www.example.com
 Open a browser and key in URL:
 
 ```
-$ open http://localhost:8080/swagger-ui/
+$ open http://localhost:8080/swagger-ui.html
 ```
 Authenticate with admin/secret
 
