@@ -60,6 +60,17 @@ Authenticate with admin/secret
 > Note:
 > - All the APIs can be playing through the UI
 
+## View database with h2-console
+
+Open a browser and key in URL:
+
+```
+$ open http://localhost:8080/h2-console
+```
+Authenticate with user/af
+
+![h2-console](h2-console.png "H2 ConsoleI")
+
 ## Copyright
 
 Released under the Apache License 2.0. See the [LICENSE](https://github.com/codecentric/springboot-sample-app/blob/master/LICENSE) file.
