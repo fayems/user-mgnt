@@ -66,7 +66,12 @@ public class UserController implements UserApi {
                                 .build());
             }
             try {
-                userService.saveUser(userDto);
+                Integer userId = userService.saveUser(userDto);
+                return ResponseEntity.status(HttpStatus.OK.value())
+                        .body(ResponseDto.builder()
+                                .status(HttpStatus.OK.value())
+                                .message(String.format("User %s registered", userId))
+                                .build());
             } catch(UserAlreadyExistsException uae) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN.value())
                         .body(ResponseDto.builder()
@@ -74,11 +79,6 @@ public class UserController implements UserApi {
                                 .message("User already exists")
                                 .build());
             }
-            return ResponseEntity.status(HttpStatus.OK.value())
-                    .body(ResponseDto.builder()
-                            .status(HttpStatus.OK.value())
-                            .message("User registered")
-                            .build());
         } catch (ServiceException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                     .body(ResponseDto.builder()
