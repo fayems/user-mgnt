@@ -18,7 +18,7 @@
         select * from user where id = #{id}
     </select>
     
-    <insert id="insert" parameterType="fr.af.test.offer.usr.entity.database.UserDB">
+    <insert id="insert" parameterType="fr.af.test.offer.usr.entity.database.UserDB" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         insert into user(name,birthday,country,phone_number,gender,registration_date) values(#{name},#{birthday},#{country},#{phone},#{gender},#{registrationDate})
     </insert>
 

@@ -33,7 +33,8 @@ public class UserDao {
      */
     public Integer insert(UserDB user) throws DatabaseException {
         try {
-            return userMapper.insert(user);
+            userMapper.insert(user);
+            return user.getId();
         } catch (Exception e) {
             throw new DatabaseException(e);
         }
