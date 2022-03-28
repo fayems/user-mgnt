@@ -24,9 +24,9 @@ public class LoggerAspect {
         // log pointcut
     }
 
-    @Around(value= "logCall()")
-    public Object aroundAdvice(ProceedingJoinPoint jp) throws Throwable {
-        loggerService.log("Input", jp.getArgs()[0]);
+    @Around(value = "logCall()")
+    public Object aroundAdvice(ProceedingJoinPoint jp) {
+        loggerService.log(String.format("Input : %s", jp.getArgs()[0]));
         Object result = null;
         Instant start = Instant.now();
         try {
@@ -34,8 +34,8 @@ public class LoggerAspect {
         } finally {
             Instant finish = Instant.now();
             org.joda.time.Duration duration = org.joda.time.Duration.millis(Duration.between(start, finish).toMillis());
-            loggerService.log("Output", result);
-            loggerService.log("Process time", PeriodFormat.getDefault().print(duration.toPeriod()));
+            loggerService.log(String.format("Output : %s", result));
+            loggerService.log(String.format("Process time : %s", PeriodFormat.getDefault().print(duration.toPeriod())));
             return result;
         }
         

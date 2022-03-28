@@ -37,9 +37,9 @@ public class LoggerServiceTest {
 
     @Test
     public void logTest() {
-        loggerService.log("log title", "log message");
+        loggerService.log("title : message");
         List<ILoggingEvent> logsList = listAppender.list;
-        Assert.assertEquals("log title : log message", logsList.get(0).getFormattedMessage());
+        Assert.assertEquals("title : message", logsList.get(0).getFormattedMessage());
         Assert.assertEquals(Level.INFO, logsList.get(0).getLevel());
     }
 

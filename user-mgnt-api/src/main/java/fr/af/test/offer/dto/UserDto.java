@@ -21,7 +21,7 @@ public class UserDto {
     /**
      * User name
      */
-    @ApiModelProperty(value = "name", example = "Jean-Paul")
+    @ApiModelProperty(value = "name", example = "Corinne")
     @NotBlank(message = "Name may not be blank")
     private String name;
 

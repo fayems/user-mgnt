@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class LoggerService {
-    public void log(String title, Object msg) {
-        log.info("{} : {}", title, msg);
+    public void log(Object msg) {
+        log.info("{}", msg);
     }
 }
